@@ -1,14 +1,19 @@
 import os
+from imageio import imread
+import time
 import json
 import matplotlib
 matplotlib.use('TkAgg')
+from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg,
+                                               NavigationToolbar2TkAgg)
+from matplotlib.figure import Figure
 import tkinter as tk
 import tkinter.filedialog
 from tkinter import ttk
 import click
 
 
-from . import pre, pipe, __version__
+from . import pre, pipe, draw, __version__
 
 
 STANDARD_MARGIN = (3, 3, 12, 12)
@@ -39,6 +44,7 @@ class Launch(tk.Tk):
                                                  name='Full stats filename')
         self.image_output_filename = tk.StringVar(value='images-stats.csv',
                                                   name='Image stats filename')
+        self.preview = tk.BooleanVar(value=False, name='Preview')
         self.parameters = [
             self.crop_radius,
             self.smooth_method,
@@ -51,6 +57,7 @@ class Launch(tk.Tk):
             self.skeleton_plot_prefix,
             self.full_output_filename,
             self.image_output_filename,
+            self.preview,
         ]
 
         self.input_files = []
@@ -93,7 +100,7 @@ class Launch(tk.Tk):
         for param in params_dict:
             print(f'Parameter not recognised: {param}')
 
-    def save_parameters(self, filename):
+    def save_parameters(self, filename=''):
         out = {p._name.lower(): p.get() for p in self.parameters}
         out['input files'] = self.input_files
         out['output folder'] = self.output_folder
@@ -103,8 +110,11 @@ class Launch(tk.Tk):
         while os.path.exists(filename):
             filename = f'{base} ({attempt}){ext}'
             attempt += 1
-        with open(filename, mode='wt') as fout:
-            json.dump(out, fout, indent=2)
+        if filename:
+            with open(filename, mode='wt') as fout:
+                json.dump(out, fout, indent=2)
+        else:
+            return json.dumps(out)
 
     def create_main_frame(self):
         main = ttk.Frame(master=self, padding=STANDARD_MARGIN)
@@ -123,7 +133,10 @@ class Launch(tk.Tk):
         for i, param in enumerate(self.parameters, start=1):
             param_label = ttk.Label(parameters, text=param._name)
             param_label.grid(row=i, column=0, sticky='nsew')
-            if type(param) == tk.BooleanVar:
+            if param._name.lower() == 'preview':
+                param_entry = ttk.Checkbutton(parameters, variable=param,
+                                              command=self.launch_preview)
+            elif type(param) == tk.BooleanVar:
                 param_entry = ttk.Checkbutton(parameters, variable=param)
             elif hasattr(param, '_choices'):
                 param_entry = ttk.OptionMenu(parameters, param, param.get(),
@@ -158,6 +171,45 @@ class Launch(tk.Tk):
     def choose_output_folder(self):
         self.output_folder = \
                 tk.filedialog.askdirectory(initialdir=self.output_folder)
+
+    def launch_preview(self):
+        if not self.preview.get():
+            return
+        import threading
+        self.preview_thread = threading.Thread(target=self.monitor_preview,
+                                               name='monitor preview')
+        self.preview_thread.start()
+        self.update_preview()
+
+    def monitor_preview(self):
+        """Run this in a separate thread"""
+        past_values = self.save_parameters()
+        while True:
+            if not self.preview.get():
+                time.sleep(1)
+            params_str = self.save_parameters()
+            if params_str != past_values:  # parameter change
+                self.update_preview()
+                past_values = params_str
+            time.sleep(0.1)
+
+    def update_preview(self):
+        if not self.input_files:
+            return
+        if not hasattr(self, 'figure'):
+            print('making the figure!')
+            preview_window = tk.Toplevel(self)
+            preview_window.wm_title('Preview')
+            self.figure = Figure(dpi=300)
+            self.axes = self.figure.add_subplot(111)
+            canvas = FigureCanvasTkAgg(self.figure, master=self)
+            canvas.show()
+            canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=1)
+            toolbar = NavigationToolbar2TkAgg(canvas, self)
+            toolbar.update()
+            canvas._tkcanvas.pack(side=tk.TOP, fill=tk.BOTH, expand=1)
+        image = imread(self.input_files[0])
+        self.axes.imshow(image)
 
     def run(self):
         print('Input files:')

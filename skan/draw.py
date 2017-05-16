@@ -115,7 +115,8 @@ def overlay_euclidean_skeleton_2d(image, skeleton, *,
 
 
 def pipeline_plot(image, *, sigma=0., radius=0, offset=0.,
-                  figsize=(9, 9), smooth_method='Gaussian'):
+                  smooth_method='Gaussian', figsize=(9, 9),
+                  fig=None, axes=None):
     """Draw the image, the thresholded version, and its skeleton.
 
     Parameters
@@ -131,10 +132,14 @@ def pipeline_plot(image, *, sigma=0., radius=0, offset=0.,
     offset : float, optional
         If given, reduce the threshold by this amount. Higher values
         result in more pixels above the threshold.
+    smooth_method : {'Gaussian', 'TV', 'NL'}, optional
+        Passed directly to `pre.threshold`.
     figsize : 2-tuple of float, optional
         The width and height of the figure.
     smooth_method : {'Gaussian', 'TV', 'NL'}, optional
         Which denoising method to use on the image.
+    fig, axes : matplotlib Figure and Axes
+        Where to draw the plots.
 
     Returns
     -------
@@ -143,7 +148,9 @@ def pipeline_plot(image, *, sigma=0., radius=0, offset=0.,
     axes : array of matplotlib Axes
         The four axes containing the drawn images.
     """
-    fig, axes = plt.subplots(2, 2, figsize=figsize)
+    if fig is None:
+        fig, axes = plt.subplots(2, 2, figsize=figsize,
+                                 sharex=True, sharey=True)
     axes = np.ravel(axes)
     axes[0].imshow(image, cmap='gray')
     axes[0].axis('off')
