@@ -41,7 +41,8 @@ def hyperball(ndim, radius):
 
 
 def threshold(image, *, sigma=0., radius=0, offset=0.,
-              method='sauvola', smooth_method='Gaussian'):
+              method='sauvola', smooth_method='Gaussian',
+              max_deviation=None):
     """Use scikit-image filters to "intelligently" threshold an image.
 
     Parameters
@@ -60,9 +61,12 @@ def threshold(image, *, sigma=0., radius=0, offset=0.,
     method: {'sauvola', 'niblack', 'median'}
         Which method to use for thresholding. Sauvola is 100x faster, but
         median might be more accurate.
-    smooth_method: {'Gaussian', 'TV', 'NL'}
+    smooth_method : {'Gaussian', 'TV', 'NL'}
         Which method to use for smoothing. Choose from Gaussian smoothing,
         total variation denoising, and non-local means denoising.
+    max_deviation : float in [0, 1]
+        The maximum deviation allowed for a local threshold from the global
+        threshold.
 
     Returns
     -------
@@ -81,8 +85,9 @@ def threshold(image, *, sigma=0., radius=0, offset=0.,
         elif smooth_method.lower() == 'nl':
             image = restoration.denoise_nl_means(image,
                                              patch_size=round(2 * sigma))
+    t0 = filters.threshold_otsu(image) + offset
     if radius == 0:
-        t = filters.threshold_otsu(image) + offset
+        t = t0
     else:
         if method == 'median':
             footprint = hyperball(image.ndim, radius=radius)
@@ -96,5 +101,8 @@ def threshold(image, *, sigma=0., radius=0, offset=0.,
         else:
             raise ValueError('Unknown method %s. Valid methods are median,'
                              'niblack, and sauvola.' % method)
+        if max_deviation is not None:
+            np.clip(t, t0 * (1 - max_deviation), t0 * (1 + max_deviation),
+                    out=t)
     thresholded = image > t
     return thresholded
