@@ -5,19 +5,12 @@
         "url": "http://lucyleeow.github.io/skan/dev"
     },
     {
+        "name": "stable",
         "version": "0.10.x",
         "url": "http://lucyleeow.github.io/skan/0.10.x"
     },
     {
         "version": "0.9.x",
-        "url": "http://lucyleeow.github.io/skan/0.9.x"
-    },
-    {
-        "version": "0.8.x",
-        "url": "http://lucyleeow.github.io/skan/0.8.x"
-    },
-    {
-        "version": "0.7.x",
-        "url": "http://lucyleeow.github.io/skan/0.7.x"
+        "url": "http://lucyleeow.github.io/skan/0.10.x"
     }
 ]
