@@ -1,0 +1,74 @@
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.9.12/x64/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/opt/hostedtoolcache/Python/3.9.12/x64/lib/python3.9/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/opt/hostedtoolcache/Python/3.9.12/x64/lib/python3.9/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/opt/hostedtoolcache/Python/3.9.12/x64/lib/python3.9/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/opt/hostedtoolcache/Python/3.9.12/x64/lib/python3.9/asyncio/base_events.py", line 647, in run_until_complete
+    return future.result()
+  File "/opt/hostedtoolcache/Python/3.9.12/x64/lib/python3.9/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/opt/hostedtoolcache/Python/3.9.12/x64/lib/python3.9/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/opt/hostedtoolcache/Python/3.9.12/x64/lib/python3.9/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import numpy as np
+import zarr
+
+neuron = np.asarray(zarr.open('example-data/neuron.zarr.zip'))
+
+fig, ax = plt.subplots()
+ax.imshow(neuron, cmap='gray')
+ax.scatter(57, 54)
+ax.set_axis_off()
+plt.show()
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mFileNotFoundError[0m                         Traceback (most recent call last)
+Input [0;32mIn [2][0m, in [0;36m<cell line: 4>[0;34m()[0m
+[1;32m      1[0m [38;5;28;01mimport[39;00m [38;5;21;01mnumpy[39;00m [38;5;28;01mas[39;00m [38;5;21;01mnp[39;00m
+[1;32m      2[0m [38;5;28;01mimport[39;00m [38;5;21;01mzarr[39;00m
+[0;32m----> 4[0m neuron [38;5;241m=[39m np[38;5;241m.[39masarray([43mzarr[49m[38;5;241;43m.[39;49m[43mopen[49m[43m([49m[38;5;124;43m'[39;49m[38;5;124;43mexample-data/neuron.zarr.zip[39;49m[38;5;124;43m'[39;49m[43m)[49m)
+[1;32m      6[0m fig, ax [38;5;241m=[39m plt[38;5;241m.[39msubplots()
+[1;32m      7[0m ax[38;5;241m.[39mimshow(neuron, cmap[38;5;241m=[39m[38;5;124m'[39m[38;5;124mgray[39m[38;5;124m'[39m)
+
+File [0;32m/opt/hostedtoolcache/Python/3.9.12/x64/lib/python3.9/site-packages/zarr/convenience.py:82[0m, in [0;36mopen[0;34m(store, mode, **kwargs)[0m
+[1;32m     78[0m path [38;5;241m=[39m kwargs[38;5;241m.[39mget([38;5;124m'[39m[38;5;124mpath[39m[38;5;124m'[39m)
+[1;32m     79[0m [38;5;66;03m# handle polymorphic store arg[39;00m
+[1;32m     80[0m [38;5;66;03m# we pass storage options explicitly, since normalize_store_arg might construct[39;00m
+[1;32m     81[0m [38;5;66;03m# a store if the input is a fsspec-compatible URL[39;00m
+[0;32m---> 82[0m _store: BaseStore [38;5;241m=[39m [43mnormalize_store_arg[49m[43m([49m
+[1;32m     83[0m [43m    [49m[43mstore[49m[43m,[49m[43m [49m[43mstorage_options[49m[38;5;241;43m=[39;49m[43mkwargs[49m[38;5;241;43m.[39;49m[43mpop[49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43mstorage_options[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[43m{[49m[43m}[49m[43m)[49m[43m,[49m[43m [49m[43mmode[49m[38;5;241;43m=[39;49m[43mmode[49m
+[1;32m     84[0m [43m[49m[43m)[49m
+[1;32m     85[0m path [38;5;241m=[39m normalize_storage_path(path)
+[1;32m     87[0m [38;5;28;01mif[39;00m mode [38;5;129;01min[39;00m {[38;5;124m'[39m[38;5;124mw[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124mw-[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124mx[39m[38;5;124m'[39m}:
+
+File [0;32m/opt/hostedtoolcache/Python/3.9.12/x64/lib/python3.9/site-packages/zarr/storage.py:118[0m, in [0;36mnormalize_store_arg[0;34m(store, storage_options, mode)[0m
+[1;32m    116[0m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m([38;5;124m"[39m[38;5;124mstorage_options passed with non-fsspec path[39m[38;5;124m"[39m)
+[1;32m    117[0m [38;5;28;01mif[39;00m store[38;5;241m.[39mendswith([38;5;124m'[39m[38;5;124m.zip[39m[38;5;124m'[39m):
+[0;32m--> 118[0m     [38;5;28;01mreturn[39;00m [43mZipStore[49m[43m([49m[43mstore[49m[43m,[49m[43m [49m[43mmode[49m[38;5;241;43m=[39;49m[43mmode[49m[43m)[49m
+[1;32m    119[0m [38;5;28;01melif[39;00m store[38;5;241m.[39mendswith([38;5;124m'[39m[38;5;124m.n5[39m[38;5;124m'[39m):
+[1;32m    120[0m     [38;5;28;01mfrom[39;00m [38;5;21;01mzarr[39;00m[38;5;21;01m.[39;00m[38;5;21;01mn5[39;00m [38;5;28;01mimport[39;00m N5Store
+
+File [0;32m/opt/hostedtoolcache/Python/3.9.12/x64/lib/python3.9/site-packages/zarr/storage.py:1506[0m, in [0;36mZipStore.__init__[0;34m(self, path, compression, allowZip64, mode, dimension_separator)[0m
+[1;32m   1503[0m [38;5;28mself[39m[38;5;241m.[39mmutex [38;5;241m=[39m RLock()
+[1;32m   1505[0m [38;5;66;03m# open zip file[39;00m
+[0;32m-> 1506[0m [38;5;28mself[39m[38;5;241m.[39mzf [38;5;241m=[39m [43mzipfile[49m[38;5;241;43m.[39;49m[43mZipFile[49m[43m([49m[43mpath[49m[43m,[49m[43m [49m[43mmode[49m[38;5;241;43m=[39;49m[43mmode[49m[43m,[49m[43m [49m[43mcompression[49m[38;5;241;43m=[39;49m[43mcompression[49m[43m,[49m
+[1;32m   1507[0m [43m                          [49m[43mallowZip64[49m[38;5;241;43m=[39;49m[43mallowZip64[49m[43m)[49m
+
+File [0;32m/opt/hostedtoolcache/Python/3.9.12/x64/lib/python3.9/zipfile.py:1248[0m, in [0;36mZipFile.__init__[0;34m(self, file, mode, compression, allowZip64, compresslevel, strict_timestamps)[0m
+[1;32m   1246[0m [38;5;28;01mwhile[39;00m [38;5;28;01mTrue[39;00m:
+[1;32m   1247[0m     [38;5;28;01mtry[39;00m:
+[0;32m-> 1248[0m         [38;5;28mself[39m[38;5;241m.[39mfp [38;5;241m=[39m [43mio[49m[38;5;241;43m.[39;49m[43mopen[49m[43m([49m[43mfile[49m[43m,[49m[43m [49m[43mfilemode[49m[43m)[49m
+[1;32m   1249[0m     [38;5;28;01mexcept[39;00m [38;5;167;01mOSError[39;00m:
+[1;32m   1250[0m         [38;5;28;01mif[39;00m filemode [38;5;129;01min[39;00m modeDict:
+
+[0;31mFileNotFoundError[0m: [Errno 2] No such file or directory: '/home/runner/work/skan/skan/doc/examples/example-data/neuron.zarr.zip'
+FileNotFoundError: [Errno 2] No such file or directory: '/home/runner/work/skan/skan/doc/examples/example-data/neuron.zarr.zip'
+
