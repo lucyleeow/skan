@@ -2,22 +2,22 @@
     {
         "name": "dev",
         "version": "0.11.0.dev0",
-        "url": "https://jni.github.io/skan/dev"
+        "url": "http://lucyleeow.github.io/skan/dev"
     },
     {
         "version": "0.10.x",
-        "url": "https://jni.github.io/skan/0.10.x"
+        "url": "http://lucyleeow.github.io/skan/0.10.x"
     },
     {
         "version": "0.9.x",
-        "url": "https://jni.github.io/skan/0.9.x"
+        "url": "http://lucyleeow.github.io/skan/0.9.x"
     },
     {
         "version": "0.8.x",
-        "url": "https://jni.github.io/skan/0.8.x"
+        "url": "http://lucyleeow.github.io/skan/0.8.x"
     },
     {
         "version": "0.7.x",
-        "url": "https://jni.github.io/skan/0.7.x"
+        "url": "http://lucyleeow.github.io/skan/0.7.x"
     }
 ]
