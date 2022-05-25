@@ -120,7 +120,7 @@ html_theme_options = {
     # pydata theme version switcher config
     'navbar_end': ['version-switcher', 'navbar-icon-links'],
     'switcher': {
-        'json_url': 'http://lucyleeow.github.io/skan/dev/_static/version_switcher.json',
+        'json_url': 'https://lucyleeow.github.io/skan/dev/_static/version_switcher.json',
         'version_match': version,
     },
     # Set you GA account ID to enable tracking
@@ -128,7 +128,7 @@ html_theme_options = {
 
     # Specify a base_url used to generate sitemap.xml. If not
     # specified, then no sitemap will be built.
-    'base_url': 'http://lucyleeow.github.io/skan/',
+    'base_url': 'https://lucyleeow.github.io/skan/',
 
     # Set the color and the accent color
     'color_primary': 'blue',
