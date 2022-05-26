@@ -1,16 +1,16 @@
 [
     {
         "name": "dev",
-        "version": "dev",
+        "version": "0.11",
         "url": "https://lucyleeow.github.io/skan/dev"
     },
     {
         "name": "stable",
-        "version": "0.10.x",
+        "version": "0.10",
         "url": "https://lucyleeow.github.io/skan/0.10.x"
     },
     {
-        "version": "0.9.x",
+        "version": "0.9",
         "url": "https://lucyleeow.github.io/skan/0.9.x"
     }
 ]
