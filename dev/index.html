@@ -41,7 +41,7 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Skan API Reference" href="api/api.html" />
+    <link rel="next" title="Getting started: Skeleton analysis with Skan" href="getting_started/getting_started.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -77,6 +77,36 @@
       <div class="navbar-center-item">
         <ul id="navbar-main-elements" class="navbar-nav">
     <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="getting_started/getting_started.html">
+  Getting started: Skeleton analysis with Skan
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="getting_started/install.html">
+  Installing Skan
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="examples/complete_analysis.html">
+  Complete analysis with Skan
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="examples/sholl_analysis.html">
+  Sholl analysis in Skan
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="examples/visualizing_3d_skeletons.html">
+  Display 3D skeletons in napari
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="api/api.html">
   Skan API Reference
  </a>
@@ -85,6 +115,18 @@
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="gui.html">
   Using Skan’s GUI
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="misc/citing.html">
+  Citing Skan
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="misc/faq.html">
+  FAQ
  </a>
 </li>
 
@@ -255,6 +297,29 @@ function checkPageExistsAndRedirect(event) {
 <p>Skan is a pure Python library to analyse skeleton images.</p>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/getting_started.html">Getting started: Skeleton analysis with Skan</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/getting_started.html#extracting-a-skeleton-from-an-image">0. Extracting a skeleton from an image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/getting_started.html#measuring-the-length-of-skeleton-branches">1. Measuring the length of skeleton branches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/getting_started.html#comparing-different-skeletons">2. Comparing different skeletons</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/install.html">Installing Skan</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/install.html#getting-the-python-package-and-dependencies">Getting the Python package and dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples/complete_analysis.html">Complete analysis with Skan</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples/complete_analysis.html#getting-the-data">0. Getting the data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/complete_analysis.html#using-skan-pipe-to-get-a-branch-dataset-for-analysis">1. Using <code class="docutils literal notranslate"><span class="pre">skan.pipe</span></code> to get a branch dataset for analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/complete_analysis.html#cleaning-up-the-data">2. Cleaning up the data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/complete_analysis.html#making-the-figure">3. Making the figure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples/sholl_analysis.html">Sholl analysis in Skan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/visualizing_3d_skeletons.html">Display 3D skeletons in napari</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples/visualizing_3d_skeletons.html#using-the-shapes-layer">Using the Shapes layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/visualizing_3d_skeletons.html#using-the-labels-layer">Using the Labels layer</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="api/api.html">Skan API Reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="api/skan.csr.html">skan.csr: CSR Graph representation of skeletons</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/skan.draw.html">skan.draw: Skeleton visualisation</a></li>
@@ -266,6 +331,14 @@ function checkPageExistsAndRedirect(event) {
 <li class="toctree-l2"><a class="reference internal" href="gui.html#launching-the-gui">Launching the GUI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gui.html#interpreting-the-gui">Interpreting the GUI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gui.html#configuration-files">Configuration files</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="misc/citing.html">Citing Skan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="misc/faq.html">FAQ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="misc/faq.html#i-just-upgraded-from-skan-v0-8-or-0-9-and-my-measurements-are-slightly-different-what-gives">I just upgraded from skan v0.8 or 0.9 and my measurements are slightly different. What gives?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc/faq.html#what-s-unique-junctions-or-junction-mode">What’s <code class="docutils literal notranslate"><span class="pre">unique_junctions</span></code> or <code class="docutils literal notranslate"><span class="pre">junction_mode</span></code>?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc/faq.html#why-are-coordinates-floats-and-not-integers">Why are coordinates floats and not integers?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc/faq.html#why-is-coordinate-0-0-0-always-in-my-coordinate-list-why-is-the-coordinate-array-larger-than-the-number-of-nodes-in-the-pixel-graph">Why is coordinate (0, 0, 0) always in my coordinate list? / Why is the coordinate array larger than the number of nodes in the pixel graph?</a></li>
 </ul>
 </li>
 </ul>
@@ -286,10 +359,10 @@ function checkPageExistsAndRedirect(event) {
               
               <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='right-next' id="next-link" href="api/api.html" title="next page">
+    <a class='right-next' id="next-link" href="getting_started/getting_started.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Skan API Reference</p>
+        <p class="prev-next-title">Getting started: Skeleton analysis with Skan</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
