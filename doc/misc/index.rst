@@ -3,6 +3,7 @@ Miscellaneous
 =============
 
 .. toctree::
-    faq
-    release-notes/index
-    citing
+
+   faq
+   release-notes/index
+   citing
