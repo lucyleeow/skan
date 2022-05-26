@@ -2,7 +2,7 @@
 Miscellaneous
 =============
 
-text
+FAQ, release notes and information on how to cite skan.
 
 
 .. toctree::
