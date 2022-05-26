@@ -1,5 +1,6 @@
+========
 Examples
-********
+========
 
 skan examples.
 

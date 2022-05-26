@@ -1,5 +1,6 @@
+===============
 Getting started
-***************
+===============
 
 Getting started with skan.
 
@@ -7,5 +8,5 @@ Getting started with skan.
 .. toctree::
    :maxdepth: 1
 
-    install
-    getting_started
+   install
+   getting_started
