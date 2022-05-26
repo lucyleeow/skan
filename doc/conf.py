@@ -111,7 +111,7 @@ html_theme = 'pydata_sphinx_theme'
 # documentation.
 #
 
-version = skan.__version__.replace('dev0', '')
+version = skan.__version__
 
 # Material theme options (see theme.conf for more information)
 html_theme_options = {
