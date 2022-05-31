@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Installing Skan &#8212; Skan 0.11.0.dev0 documentation</title>
+    <title>Examples &#8212; Skan 0.11.0.dev0 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -41,8 +41,8 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Getting started: Skeleton analysis with Skan" href="getting_started.html" />
-    <link rel="prev" title="Getting started" href="index.html" />
+    <link rel="next" title="Complete analysis with Skan" href="complete_analysis.html" />
+    <link rel="prev" title="Getting started: Skeleton analysis with Skan" href="../getting_started/getting_started.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -77,14 +77,14 @@
       
       <div class="navbar-center-item">
         <ul id="navbar-main-elements" class="navbar-nav">
-    <li class="toctree-l1 current active nav-item">
- <a class="reference internal nav-link" href="index.html">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../getting_started/index.html">
   Getting started
  </a>
 </li>
 
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../examples/index.html">
+<li class="toctree-l1 current active nav-item">
+ <a class="current reference internal nav-link" href="#">
   Examples
  </a>
 </li>
@@ -128,14 +128,14 @@
 
 <!-- NOTE: this JS must live here (not in our global JS file) because it relies
      on being processed by Jinja before it is run (specifically for replacing
-     variables getting_started/install and {'json_url': 'https://lucyleeow.github.io/skan/dev/_static/version_switcher.json', 'version_match': 'dev'}.
+     variables examples/index and {'json_url': 'https://lucyleeow.github.io/skan/dev/_static/version_switcher.json', 'version_match': 'dev'}.
 -->
 
 <script type="text/javascript">
 // Check if corresponding page path exists in other version of docs
 // and, if so, go there instead of the homepage of the other docs version
 function checkPageExistsAndRedirect(event) {
-    const currentFilePath = "getting_started/install.html",
+    const currentFilePath = "examples/index.html",
           tryUrl = event.target.getAttribute("href");
     let otherDocsHomepage = tryUrl.replace(currentFilePath, "");
     $.ajax({
@@ -156,7 +156,7 @@ function checkPageExistsAndRedirect(event) {
 // Populate the version switcher from the JSON config file
 (function () {
     $.getJSON("https://lucyleeow.github.io/skan/dev/_static/version_switcher.json", function(data, textStatus, jqXHR) {
-        const currentFilePath = "getting_started/install.html";
+        const currentFilePath = "examples/index.html";
         // create links to the corresponding page in the other docs versions
         $.each(data, function(index, entry) {
             // if no custom name specified (e.g., "latest"), use version string
@@ -216,15 +216,20 @@ function checkPageExistsAndRedirect(event) {
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
   <div class="bd-toc-item active">
-    <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Installing Skan
+    <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="complete_analysis.html">
+   Complete analysis with Skan
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="getting_started.html">
-   Getting started: Skeleton analysis with Skan
+  <a class="reference internal" href="sholl_analysis.html">
+   Sholl analysis in Skan
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="visualizing_3d_skeletons.html">
+   Display 3D skeletons in napari
   </a>
  </li>
 </ul>
@@ -244,19 +249,9 @@ function checkPageExistsAndRedirect(event) {
               
               <div class="toc-item">
                 
-<div class="tocsection onthispage mt-5 pt-1 pb-3">
-    <i class="fas fa-list"></i> On this page
-</div>
 
 <nav id="bd-toc-nav">
-    <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#getting-the-python-package-and-dependencies">
-   Getting the Python package and dependencies
-  </a>
- </li>
-</ul>
-
+    
 </nav>
               </div>
               
@@ -276,39 +271,16 @@ function checkPageExistsAndRedirect(event) {
               
               <div>
                 
-  <section id="installing-skan">
-<h1>Installing Skan<a class="headerlink" href="#installing-skan" title="Permalink to this headline">#</a></h1>
-<p>Skan is a pure Python package with several non-Python dependencies, notably
-NumPy, SciPy, and Numba. It can be installed from several Python package
-sources: PyPI, conda-forge, and GitHub.</p>
-<section id="getting-the-python-package-and-dependencies">
-<h2>Getting the Python package and dependencies<a class="headerlink" href="#getting-the-python-package-and-dependencies" title="Permalink to this headline">#</a></h2>
-<p>The easiest way to install Skan is to get
-<a class="reference external" href="https://conda.io/miniconda.html">conda</a> and then type the
-following into your terminal:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">skan</span>
-</pre></div>
+  <section id="examples">
+<h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">#</a></h1>
+<p>skan examples.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="complete_analysis.html">Complete analysis with Skan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sholl_analysis.html">Sholl analysis in Skan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualizing_3d_skeletons.html">Display 3D skeletons in napari</a></li>
+</ul>
 </div>
-<p>It is also available on PyPI:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">skan</span>
-</pre></div>
-</div>
-<p>Though getting Numba from PyPI might be a bit more challenging. Your mileage
-may vary.</p>
-<p>To get the bleeding edge version of Skan directly from the GitHub source code,
-do:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">git</span><span class="o">+</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">jni</span><span class="o">/</span><span class="n">skan</span>
-</pre></div>
-</div>
-<p>Finally, to contribute to Skan’s development, or to just make modifications for
-your own personal use, optionally [fork]() the GitHub repository to your own
-GitHub account, clone it, then:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">cloned</span><span class="o">/</span><span class="n">skan</span>
-</pre></div>
-</div>
-<p>This will install your local Skan copy, and any modifications you make to the
-code will be reflected the behaviour of the software.</p>
-</section>
 </section>
 
 
@@ -317,17 +289,17 @@ code will be reflected the behaviour of the software.</p>
               
               <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="index.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../getting_started/getting_started.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Getting started</p>
+            <p class="prev-next-title">Getting started: Skeleton analysis with Skan</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="getting_started.html" title="next page">
+    <a class='right-next' id="next-link" href="complete_analysis.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Getting started: Skeleton analysis with Skan</p>
+        <p class="prev-next-title">Complete analysis with Skan</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
